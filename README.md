@@ -1,7 +1,7 @@
 # Sahih - Islamic Hadith Web App  
 صحيح - تطبيق ويب لعرض الأحاديث النبوية
 
-## 🌐 English Description
+## 🌐 Description
 
 **Sahih** is a simple Flask-based web app that displays a collection of authentic Hadiths.  
 The project aims to make verified Islamic Hadiths easily accessible through a clean and user-friendly interface.
@@ -15,3 +15,16 @@ The project aims to make verified Islamic Hadiths easily accessible through a cl
 - Python (Flask)
 - HTML, CSS, JavaScript
 - Bootstrap (for styling)
+
+📘 الوصف
+صحيح هو تطبيق ويب بسيط مبني باستخدام فريمورك Flask لعرض مجموعة من الأحاديث النبوية الصحيحة                  
+
+🚀 الميزات
+عرض الأحاديث النبوية الصحيحة (صحيحة السند)
+واجهة عربية بتصميم نظيف وسهل الاستخدام
+خفيف وسريع الأداء
+
+🔧 التقنيات المستخدمة
+بايثون (Flask)
+HTML، CSS، JavaScript
+Bootstrap لتنسيق الواجهة
