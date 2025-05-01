@@ -32,6 +32,10 @@ The project aims to make verified Islamic Hadiths easily accessible through a cl
 ### 🔧 التقنيات المستخدمة
 
  بايثون (Flask)
+
 HTML، CSS، JavaScript
+
+
 لتنسيق الواجهة Bootstrap
+
 
