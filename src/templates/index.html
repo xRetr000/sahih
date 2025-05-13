@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-translate="page_title">Sahih - Hadith Verification</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6TBreq+8Est2Y9BEo" crossorigin="anonymous" disabled>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+      :root {
+          --primary-color: #007bff; /* Updated primary color */
+          --secondary-color: #6c757d;
+          --success-color: #28a745;
+          --warning-color: #ffc107;
+          --danger-color: #dc3545;
+          --light-bg: #f8f9fa;
+          --dark-text: #343a40; /* Slightly darker text */
+          --light-text: #f8f9fa;
+          --border-color: #dee2e6;
+          --card-bg: #ffffff;
+          --navbar-bg: #343a40;
+          --shadow-sm: 0 .125rem .25rem rgba(0, 0, 0, .075);
+          --shadow-md: 0 .5rem 1rem rgba(0,0,0,.15); /* Added medium shadow */
+          --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, .175);
+          --border-radius: .5rem; /* Slightly larger border radius */
+          --input-bg: #ffffff;
+          --input-text: #495057;
+          --result-bg: #f8f9fa;
+          --suggestion-hover-bg: #e9ecef;
+          --suggestion-border: #ced4da;
+          --suggestion-bg: #ffffff;
+          --metadata-label-color: #495057;
+          --metadata-value-color: #6c757d;
+          --blockquote-color: #343a40;
+          --modal-bg: #ffffff;
+          --modal-header-bg: #f8f9fa;
+          --modal-footer-bg: #f8f9fa;
+          --alert-info-bg: #cfe2ff;
+          --alert-info-text: #052c65;
+          --alert-info-border: #9ec5fe;
+          --font-family-sans-serif: "Poppins", sans-serif;
+          --font-family-arabic: "Noto Sans Arabic", sans-serif;
+      }
+      html[data-theme="dark"] {
+          --primary-color: #007bff;
+          --secondary-color: #adb5bd;
+          --success-color: #28a745;
+          --warning-color: #ffc107;
+          --danger-color: #dc3545;
+          --light-bg: #121212; /* Darker background */
+          --dark-text: #e0e0e0; /* Lighter text for dark mode */
+          --light-text: #e0e0e0;
+          --border-color: #444; /* Darker border */
+          --card-bg: #1e1e1e; /* Darker card background */
+          --navbar-bg: #212529;
+          --shadow-sm: 0 .125rem .25rem rgba(255,255,255,.05);
+          --shadow-md: 0 .5rem 1rem rgba(255,255,255,.07);
+          --input-bg: #2c2c2c;
+          --input-text: #f8f9fa;
+          --result-bg: #1e1e1e;
+          --suggestion-hover-bg: #343a40;
+          --suggestion-border: #444;
+          --suggestion-bg: #2c2c2c;
+          --metadata-label-color: #ced4da;
+          --metadata-value-color: #adb5bd;
+          --blockquote-color: #e0e0e0;
+          --modal-bg: #1e1e1e;
+          --modal-header-bg: #2c2c2c;
+          --modal-footer-bg: #2c2c2c;
+          --alert-info-bg: #032830;
+          --alert-info-text: #66d9ef;
+          --alert-info-border: #033c4a;
+      }
+      html[lang="ar"] body { font-family: var(--font-family-arabic); }
+      html[lang="en"] body { font-family: var(--font-family-sans-serif); }
+      body { 
+        padding-top: 5.5rem; /* Increased padding for fixed navbar */
+        background-color: var(--light-bg); 
+        color: var(--dark-text); 
+        transition: background-color 0.3s ease, color 0.3s ease; 
+        font-weight: 400;
+      }
+      .navbar { 
+        background-color: var(--navbar-bg) !important; 
+        box-shadow: var(--shadow-sm); 
+        transition: background-color 0.3s ease; 
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+      .navbar-brand { font-weight: 600; font-size: 1.5rem; color: #fff !important;}
+      html[lang="ar"] .navbar-brand { font-weight: 700; }
+      .navbar-nav .nav-link {
+        font-weight: 500;
+        color: rgba(255,255,255,.75) !important;
+        transition: color .15s ease-in-out;
+      }
+      .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+        color: #fff !important;
+      }
+      .navbar-nav .nav-item .btn {
+        margin-left: 0.5rem; 
+        font-weight: 500;
+      }
+      .main-content-wrapper { 
+        background-color: var(--card-bg); 
+        border-radius: var(--border-radius); 
+        box-shadow: var(--shadow-md); /* Enhanced shadow */
+        padding: 2rem; /* Increased padding */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+        margin-top: 2rem;
+      }
+      h1 { 
+        color: var(--primary-color); 
+        font-weight: 600; 
+        margin-bottom: 1.25rem; /* Increased margin */
+        font-size: 2rem; /* Increased size */
+      }
+      html[lang="ar"] h1 { font-weight: 700; }
+      .lead { 
+        color: var(--secondary-color); 
+        margin-bottom: 2rem; /* Increased margin */
+        transition: color 0.3s ease; 
+        font-size: 1.1rem; /* Slightly larger */
+        font-weight: 400;
+      }
+      .form-label { font-weight: 500; margin-bottom: 0.75rem; }
+      html[lang="ar"] .form-label { font-weight: 600; }
+      #hadithInput { 
+        border: 1px solid var(--border-color); 
+        background-color: var(--input-bg); 
+        color: var(--input-text); 
+        min-height: 120px; /* Increased height */
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.15s ease-in-out;
+        border-radius: var(--border-radius);
+        padding: 0.75rem;
+      }
+      #hadithInput::placeholder { color: var(--secondary-color); opacity: 0.7; }
+      #hadithInput:focus { 
+        border-color: var(--primary-color); 
+        box-shadow: 0 0 0 .25rem rgba(0, 123, 255, .25); 
+        background-color: var(--input-bg); /* Ensure focus bg matches */
+      }
+      #checkButton { 
+        font-weight: 600; 
+        padding: .75rem 1.5rem; /* Increased padding */
+        width: 100%; 
+        border-radius: var(--border-radius);
+        transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+      }
+      .result-area { 
+        margin-top: 2.5rem; /* Increased margin */
+        padding: 0; 
+        border: none; 
+        background-color: transparent; 
+        min-height: 100px; 
+        transition: background-color 0.3s ease, border-color 0.3s ease; 
+      }
+      .result-area .text-muted { 
+        color: var(--secondary-color) !important; 
+        padding: 2rem; /* Increased padding */
+        border: 1px dashed var(--border-color); /* Dashed border for placeholder */
+        border-radius: var(--border-radius); 
+        background-color: var(--result-bg); 
+        text-align: center;
+      }
+      #suggestionsList { 
+        border: 1px solid var(--suggestion-border); 
+        border-radius: var(--border-radius); 
+        box-shadow: var(--shadow-sm); 
+        max-height: 250px; /* Increased height */
+        overflow-y: auto; 
+        background-color: var(--suggestion-bg); 
+        transition: background-color 0.3s ease, border-color 0.3s ease; 
+        margin-top: 0.25rem;
+      }
+      #suggestionsList .list-group-item { 
+        cursor: pointer; 
+        border: none; 
+        border-bottom: 1px solid var(--suggestion-border); 
+        padding: .75rem 1.25rem; /* Adjusted padding */
+        background-color: var(--suggestion-bg); 
+        color: var(--dark-text); 
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+      #suggestionsList .list-group-item:last-child { border-bottom: none; }
+      #suggestionsList .list-group-item:hover { background-color: var(--suggestion-hover-bg); }
+      .card { 
+        border: 1px solid var(--border-color); 
+        box-shadow: var(--shadow-sm); 
+        margin-bottom: 1.5rem !important; 
+        background-color: var(--card-bg); 
+        transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        border-radius: var(--border-radius);
+      }
+      .card:hover {
+        box-shadow: var(--shadow-md);
+      }
+      .card-header { 
+        background-color: var(--primary-color); 
+        color: #ffffff; 
+        font-weight: 500; /* Adjusted weight */
+        border-bottom: 1px solid var(--border-color); 
+        padding: 0.75rem 1.25rem; /* Adjusted padding */
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+      }
+      html[lang="ar"] .card-header { font-weight: 600; }
+      .card-body { padding: 1.25rem; }
+      .blockquote p, .hadith-text-display { 
+        font-size: 1.05rem; /* Slightly larger */
+        line-height: 1.7; /* Improved line height */
+        margin-bottom: 1rem; 
+        color: var(--blockquote-color); 
+        transition: color 0.3s ease; 
+      }
+      .metadata-grid { 
+        display: grid; 
+        grid-template-columns: auto 1fr; 
+        gap: 8px 16px; /* Increased gap */
+        margin-top: 1.25rem; 
+        font-size: 0.9em; /* Adjusted size */
+        color: var(--metadata-value-color); 
+        border-top: 1px solid var(--border-color); 
+        padding-top: 1.25rem; 
+        transition: color 0.3s ease, border-color 0.3s ease; 
+      }
+      .metadata-label { font-weight: 500; color: var(--metadata-label-color); transition: color 0.3s ease; }
+      html[lang="ar"] .metadata-label { font-weight: 600; }
+      .alert { 
+        border-radius: var(--border-radius); 
+        font-size: 0.95rem; /* Slightly larger */
+        padding: 1rem; /* Increased padding */
+        box-shadow: var(--shadow-sm);
+      }
+      .alert-info {
+        background-color: var(--alert-info-bg);
+        color: var(--alert-info-text);
+        border: 1px solid var(--alert-info-border);
+      }
+      .text-success { color: var(--success-color) !important; }
+      .text-warning { color: var(--warning-color) !important; }
+      .text-danger { color: var(--danger-color) !important; }
+      html[data-theme="dark"] .text-success { color: #5cb85c !important; } /* Adjusted dark theme success */
+      html[data-theme="dark"] .text-warning { color: #f0ad4e !important; } /* Adjusted dark theme warning */
+      html[data-theme="dark"] .text-danger { color: #d9534f !important; } /* Adjusted dark theme danger */
+      html[data-theme="dark"] .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+      .modal-content { 
+        background-color: var(--modal-bg); 
+        color: var(--dark-text); 
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-lg);
+      }
+      .modal-header { 
+        background-color: var(--modal-header-bg); 
+        border-bottom: 1px solid var(--border-color); 
+        padding: 1rem 1.5rem;
+      }
+      .modal-header .modal-title { color: var(--dark-text); font-weight: 600; }
+      .modal-body { color: var(--dark-text); padding: 1.5rem; }
+      .modal-body .blockquote { color: var(--blockquote-color); }
+      .modal-body .metadata-grid { border-top-color: var(--border-color); }
+      .modal-body .metadata-label { color: var(--metadata-label-color); }
+      .modal-body .metadata-grid span { color: var(--metadata-value-color); }
+      .modal-footer { 
+        background-color: var(--modal-footer-bg); 
+        border-top: 1px solid var(--border-color); 
+        padding: 1rem 1.5rem;
+      }
+      .modal-footer .btn-secondary { 
+        color: var(--dark-text); 
+        background-color: var(--secondary-color); 
+        border-color: var(--secondary-color); 
+        font-weight: 500;
+      }
+      .modal-footer .btn-secondary:hover { background-color: #5a6268; border-color: #545b62; }
+      html[data-theme="dark"] .modal-content { color: var(--light-text); border-color: var(--border-color); }
+      html[data-theme="dark"] .modal-header .modal-title { color: var(--light-text); }
+      html[data-theme="dark"] .modal-body { color: var(--light-text); }
+      html[data-theme="dark"] .modal-footer .btn-secondary { color: #fff; background-color: var(--secondary-color); border-color: var(--secondary-color); }
+
+      /* Mobile specific adjustments */
+      @media (max-width: 767.98px) {
+        body { padding-top: 5rem; }
+        .main-content-wrapper { padding: 1.5rem; margin-top: 1rem; }
+        h1 { font-size: 1.75rem; }
+        .lead { font-size: 1rem; }
+        #checkButton { font-size: 1rem; padding: .6rem 1rem; }
+        .navbar-nav .nav-item .btn {
+          margin-left: 0; 
+          margin-top: 0.5rem; 
+          width: 100%; 
+          padding: 0.5rem;
+          font-size: 0.95rem;
+        }
+        .navbar-nav .nav-item:first-child .btn {
+            margin-top: 0.75rem; 
+        }
+        .navbar-nav .nav-item:last-child .btn {
+            margin-bottom: 0.75rem; 
+        }
+        .navbar-nav.ms-auto {
+            align-items: stretch; 
+        }
+        .navbar-toggler { margin-right: 0.5rem; padding: .25rem .5rem;}
+        .card-body { padding: 1rem; }
+        .blockquote p, .hadith-text-display { font-size: 1rem; }
+        .metadata-grid { font-size: 0.85em; }
+        .modal-dialog { margin: 0.5rem; }
+        .modal-content { font-size: 0.95rem; }
+        .modal-body h6 { font-size: 1.05rem; }
+        .navbar-collapse.show .navbar-button-label-text {
+          display: inline !important; 
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/" data-translate="navbar_brand">Sahih</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/" data-translate="navbar_home"><i class="bi bi-house-door-fill me-1 d-md-none"></i>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/hadith-ranking-explanation" data-translate="navbar_ranking_explanation"><i class="bi bi-info-circle-fill me-1 d-md-none"></i>Hadith Ranking Explanation</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <button id="darkModeToggle" class="btn btn-outline-light">
+                <i class="bi bi-moon-stars-fill"></i> <span class="navbar-button-label-text ms-1 d-none d-md-inline" data-translate="dark_mode_toggle_text">Dark Mode</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button id="languageToggle" class="btn btn-outline-light">
+                <i class="bi bi-translate"></i> <span class="navbar-button-label-text ms-1 d-none d-md-inline"></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mt-4">
+      <div class="main-content-wrapper">
+        <h1 data-translate="main_title">Verify a Hadith</h1>
+        <p class="lead" data-translate="lead_text">Enter the text of a Hadith below to check its authenticity and get the correct wording. Start typing for suggestions.</p>
+        <div class="mb-3 position-relative">
+          <label for="hadithInput" class="form-label" data-translate="input_label">Hadith Text</label>
+          <textarea class="form-control" id="hadithInput" rows="4" placeholder="Start typing Hadith text here..." data-translate-placeholder="input_placeholder"></textarea>
+          <div id="suggestionsList" class="list-group position-absolute w-100" style="z-index: 1000; top: 100%;"></div>
+        </div>
+        <button id="checkButton" class="btn btn-primary btn-lg" data-translate="check_button">Check Hadith</button>
+        
+        <div id="resultArea" class="result-area mt-4">
+          <p class="text-muted" data-translate="results_placeholder">Enter a Hadith and click "Check Hadith" to see the results.</p>
+        </div>
+        <div id="notificationArea" class="mt-3"></div>
+      </div>
+    </main>
+
+    <!-- Hadith Details Modal -->
+    <div class="modal fade" id="hadithDetailsModal" tabindex="-1" aria-labelledby="hadithDetailsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="hadithDetailsModalLabel" data-translate="hadith_details_title">Hadith Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h6 data-translate="hadith_text_label">Hadith Text:</h6>
+            <p id="modalHadithText" class="blockquote"></p>
+            <hr class="my-3">
+            <div class="metadata-grid">
+              <strong class="metadata-label" data-translate="narrator_label">Narrator:</strong> <span id="modalHadithNarrator"></span>
+              <strong class="metadata-label" data-translate="scholar_label">Scholar:</strong> <span id="modalHadithScholar"></span>
+              <strong class="metadata-label" data-translate="source_label">Source:</strong> <span id="modalHadithSource"></span>
+              <strong class="metadata-label" data-translate="reference_label">Reference:</strong> <span id="modalHadithReference"></span>
+              <strong class="metadata-label" data-translate="grade_label_modal">Grade:</strong> <span id="modalHadithGrade"></span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-translate="close_button">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      console.log("Script block started.");
+      const checkButton = document.getElementById("checkButton");
+      const hadithInput = document.getElementById("hadithInput");
+      const resultArea = document.getElementById("resultArea");
+      const notificationArea = document.getElementById("notificationArea");
+      const suggestionsList = document.getElementById("suggestionsList");
+      const languageToggleButton = document.getElementById("languageToggle");
+      const darkModeToggleButton = document.getElementById("darkModeToggle");
+      const bootstrapRtlLink = document.querySelector("link[href*=\'bootstrap.rtl.min.css\']");
+      let suggestionFetchTimeout;
+      let currentLang = localStorage.getItem("language") || "en";
+      let currentTheme = localStorage.getItem("theme") || "light";
+      let translations = {};
+      let hadithDetailsModalInstance = null;
+
+      function applyTheme(theme) {
+          console.log(`Applying theme: ${theme}`);
+          document.documentElement.setAttribute("data-theme", theme);
+          currentTheme = theme;
+          const toggleButton = document.getElementById("darkModeToggle");
+          const toggleButtonText = toggleButton.querySelector("span.navbar-button-label-text");
+          if (toggleButton) {
+              toggleButton.querySelector("i").className = theme === "dark" ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+              if(toggleButtonText) toggleButtonText.textContent = getTranslation(theme === "dark" ? "light_mode_toggle_text" : "dark_mode_toggle_text");
+          }
+      }
+
+      async function loadTranslations(lang) {
+          console.log(`Loading translations for: ${lang}`);
+          try {
+              const response = await fetch(`/locales/${lang}.json`);
+              if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+              translations = await response.json();
+              applyTranslationsToPage(lang);
+          } catch (error) {
+              console.error(`Error loading translations for ${lang}:`, error);
+              applyTranslationsToPage(lang);
+          }
+      }
+      
+      function getTranslation(key, defaultText = ``) {
+          return translations[key] || defaultText || key;
+      }
+
+      function applyTranslationsToPage(lang) {
+          console.log(`Applying translations for: ${lang}`);
+          currentLang = lang;
+          document.documentElement.lang = lang;
+          document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+          if (bootstrapRtlLink) bootstrapRtlLink.disabled = lang !== "ar";
+
+          document.querySelectorAll("[data-translate]").forEach(element => {
+              const key = element.getAttribute("data-translate");
+              const textSpan = element.querySelector("span.navbar-button-label-text");
+              if(textSpan && (element.id === "darkModeToggle" || element.id === "languageToggle")) { 
+                // Special handling for navbar toggle button text spans, text set in specific logic below
+              } else if (element.matches("a.nav-link")) { 
+                const icon = element.querySelector("i");
+                if (icon) {
+                    element.childNodes[element.childNodes.length -1].nodeValue = ` ${getTranslation(key, element.textContent.replace(icon.outerHTML, "").trim())}`;
+                } else {
+                    element.textContent = getTranslation(key, element.textContent);
+                }
+              } else if (!element.querySelector("i")) { 
+                 element.textContent = getTranslation(key, element.textContent);
+              }
+          });
+          document.querySelectorAll("[data-translate-placeholder]").forEach(element => {
+              const key = element.getAttribute("data-translate-placeholder");
+              element.placeholder = getTranslation(key, element.placeholder);
+          });
+          const titleElement = document.querySelector("title[data-translate]");
+          if (titleElement) {
+              const titleKey = titleElement.getAttribute("data-translate");
+              document.title = getTranslation(titleKey, document.title);
+          }
+          
+          const langToggleButtonText = languageToggleButton.querySelector("span.navbar-button-label-text");
+          languageToggleButton.querySelector("i").className = "bi bi-translate";
+          if (lang === "ar") {
+            if(langToggleButtonText) langToggleButtonText.textContent = getTranslation("language_toggle_en_text");
+          } else {
+            if(langToggleButtonText) langToggleButtonText.textContent = getTranslation("language_toggle_ar_text");
+          }
+          
+          const themeToggleButton = document.getElementById("darkModeToggle");
+          const themeToggleButtonText = themeToggleButton.querySelector("span.navbar-button-label-text");
+          if(themeToggleButtonText) themeToggleButtonText.textContent = getTranslation(currentTheme === "dark" ? "light_mode_toggle_text" : "dark_mode_toggle_text");
+          
+          const existingResultCards = resultArea.querySelectorAll(".hadith-card-item");
+          if(existingResultCards.length > 0){
+            const lastData = JSON.parse(localStorage.getItem("lastHadithResponse"));
+            if(lastData) displayHadithResults(lastData);
+          }
+      }
+
+      function displayNotification(message, type = "info") {
+          const alertDiv = document.createElement("div");
+          alertDiv.className = `alert alert-${type} alert-dismissible fade show`; 
+          alertDiv.role = "alert";
+          alertDiv.innerHTML = `
+              ${message}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          `;
+          notificationArea.innerHTML = "";
+          notificationArea.appendChild(alertDiv);
+      }
+
+      function displayHadithResults(data) {
+          resultArea.innerHTML = ""; 
+          localStorage.setItem("lastHadithResponse", JSON.stringify(data));
+
+          if (!data.found || !data.hadiths || data.hadiths.length === 0) {
+              resultArea.innerHTML = `<p class="text-muted">${getTranslation("no_hadith_found")}</p>`;
+              return;
+          }
+
+          data.hadiths.forEach((hadith, index) => {
+              const card = document.createElement("div");
+              card.className = "card hadith-card-item mb-3";
+              card.dataset.hadithData = JSON.stringify(hadith);
+
+              let gradeColorClass = "text-secondary"; // Default color
+              const gradeText = hadith.grade || "N/A";
+              if (gradeText.includes("صحيح")) gradeColorClass = "text-success";
+              else if (gradeText.includes("حسن")) gradeColorClass = "text-warning";
+              else if (gradeText.includes("ضعيف") || gradeText.includes("موضوع") || gradeText.includes("باطل")) gradeColorClass = "text-danger";
+
+              card.innerHTML = `
+                  <div class="card-header">
+                      ${getTranslation("hadith_result_title")} ${index + 1}
+                  </div>
+                  <div class="card-body">
+                      <p class="hadith-text-display">${hadith.text}</p>
+                      <div class="metadata-grid">
+                          <strong class="metadata-label">${getTranslation("grade_label")}:</strong> <span class="${gradeColorClass} fw-bold">${gradeText}</span>
+                      </div>
+                      <button class="btn btn-sm btn-outline-primary mt-3 view-details-btn" data-bs-toggle="modal" data-bs-target="#hadithDetailsModal">${getTranslation("view_details_button")}</button>
+                  </div>
+              `;
+              resultArea.appendChild(card);
+          });
+          
+          document.querySelectorAll(".view-details-btn").forEach(button => {
+              button.addEventListener("click", function() {
+                  const card = this.closest(".hadith-card-item");
+                  const hadithData = JSON.parse(card.dataset.hadithData);
+                  populateHadithDetailsModal(hadithData);
+              });
+          });
+      }
+
+      function populateHadithDetailsModal(hadith) {
+          document.getElementById("modalHadithText").textContent = hadith.text || "N/A";
+          document.getElementById("modalHadithNarrator").textContent = hadith.narrator || "N/A";
+          document.getElementById("modalHadithScholar").textContent = hadith.scholar || "N/A";
+          document.getElementById("modalHadithSource").textContent = hadith.source || "N/A";
+          document.getElementById("modalHadithReference").textContent = hadith.reference || "N/A";
+          document.getElementById("modalHadithGrade").textContent = hadith.grade || "N/A";
+          
+          document.getElementById("hadithDetailsModalLabel").textContent = getTranslation("hadith_details_title");
+          document.querySelector("#hadithDetailsModal .modal-body h6[data-translate=\"hadith_text_label\"]").textContent = getTranslation("hadith_text_label");
+          document.querySelector("#hadithDetailsModal .metadata-label[data-translate=\"narrator_label\"]").textContent = getTranslation("narrator_label");
+          document.querySelector("#hadithDetailsModal .metadata-label[data-translate=\"scholar_label\"]").textContent = getTranslation("scholar_label");
+          document.querySelector("#hadithDetailsModal .metadata-label[data-translate=\"source_label\"]").textContent = getTranslation("source_label");
+          document.querySelector("#hadithDetailsModal .metadata-label[data-translate=\"reference_label\"]").textContent = getTranslation("reference_label");
+          document.querySelector("#hadithDetailsModal .metadata-label[data-translate=\"grade_label_modal\"]").textContent = getTranslation("grade_label_modal");
+          document.querySelector("#hadithDetailsModal .btn-secondary[data-translate=\"close_button\"]").textContent = getTranslation("close_button");
+      }
+
+      checkButton.addEventListener("click", async () => {
+          const text = hadithInput.value.trim();
+          if (!text) {
+              displayNotification(getTranslation("error_no_text"), "warning");
+              return;
+          }
+          resultArea.innerHTML = `<p class="text-muted">${getTranslation("checking_hadith")}</p>`;
+          notificationArea.innerHTML = "";
+          try {
+              const response = await fetch("/check", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ text: text })
+              });
+              if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+              const data = await response.json();
+              if (data.error) {
+                  displayNotification(`${getTranslation("error_api_fetch")} ${data.error}`, "danger");
+                  resultArea.innerHTML = `<p class="text-muted">${getTranslation("results_placeholder")}</p>`;
+              } else {
+                  displayHadithResults(data);
+                  if(data.more_results_available){
+                    displayNotification(getTranslation("more_results_on_dorar"), "info");
+                  }
+              }
+          } catch (error) {
+              console.error("Error checking Hadith:", error);
+              displayNotification(getTranslation("error_generic_check"), "danger");
+              resultArea.innerHTML = `<p class="text-muted">${getTranslation("results_placeholder")}</p>`;
+          }
+      });
+
+      hadithInput.addEventListener("input", () => {
+          const query = hadithInput.value.trim();
+          suggestionsList.innerHTML = "";
+          if (query.length < 3) return;
+          clearTimeout(suggestionFetchTimeout);
+          suggestionFetchTimeout = setTimeout(async () => {
+              try {
+                  const response = await fetch(`/suggest?q=${encodeURIComponent(query)}&limit=5`);
+                  if (!response.ok) return;
+                  const suggestions = await response.json();
+                  if (suggestions.error) return;
+                  suggestions.forEach(suggestionText => {
+                      const item = document.createElement("a");
+                      item.href = "#";
+                      item.className = "list-group-item list-group-item-action";
+                      item.textContent = suggestionText;
+                      item.addEventListener("click", (e) => {
+                          e.preventDefault();
+                          hadithInput.value = suggestionText;
+                          suggestionsList.innerHTML = "";
+                          checkButton.click();
+                      });
+                      suggestionsList.appendChild(item);
+                  });
+              } catch (error) {
+                  console.error("Error fetching suggestions:", error);
+              }
+          }, 300);
+      });
+
+      document.addEventListener("click", (event) => {
+          if (!suggestionsList.contains(event.target) && event.target !== hadithInput) {
+              suggestionsList.innerHTML = "";
+          }
+      });
+
+      languageToggleButton.addEventListener("click", () => {
+          const newLang = currentLang === "en" ? "ar" : "en";
+          localStorage.setItem("language", newLang);
+          loadTranslations(newLang);
+      });
+
+      darkModeToggleButton.addEventListener("click", () => {
+          const newTheme = currentTheme === "light" ? "dark" : "light";
+          localStorage.setItem("theme", newTheme);
+          applyTheme(newTheme);
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+          console.log("DOM fully loaded and parsed");
+          const modalElement = document.getElementById("hadithDetailsModal");
+          if (modalElement) {
+            hadithDetailsModalInstance = new bootstrap.Modal(modalElement);
+          } else {
+            console.error("Hadith details modal element not found!");
+          }
+          const savedTheme = localStorage.getItem("theme") || "light";
+          
+          const savedLang = localStorage.getItem("language");
+          const browserLang = navigator.language.split("-")[0];
+          const initialLang = savedLang || (browserLang === "ar" ? "ar" : "en");
+          currentLang = initialLang;
+
+          applyTheme(savedTheme); 
+          loadTranslations(initialLang); 
+      });
+
+      console.log("Script block finished.");
+    </script>
+  </body>
+</html>

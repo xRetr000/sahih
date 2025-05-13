@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-translate="hadith_ranking_page_title">Hadith Ranking Explanation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" disabled>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+      :root {
+          --primary-color: #007bff;
+          --secondary-color: #6c757d;
+          --light-bg: #f8f9fa;
+          --dark-text: #343a40;
+          --light-text: #f8f9fa;
+          --border-color: #dee2e6;
+          --card-bg: #ffffff;
+          --navbar-bg: #343a40;
+          --shadow-sm: 0 .125rem .25rem rgba(0, 0, 0, .075);
+          --shadow-md: 0 .5rem 1rem rgba(0,0,0,.15);
+          --border-radius: .5rem;
+          --blockquote-color: #343a40;
+          --font-family-sans-serif: "Poppins", sans-serif;
+          --font-family-arabic: "Noto Sans Arabic", sans-serif;
+      }
+      html[data-theme="dark"] {
+          --primary-color: #007bff;
+          --secondary-color: #adb5bd;
+          --light-bg: #121212;
+          --dark-text: #e0e0e0;
+          --light-text: #e0e0e0;
+          --border-color: #444;
+          --card-bg: #1e1e1e;
+          --navbar-bg: #212529;
+          --shadow-sm: 0 .125rem .25rem rgba(255,255,255,.05);
+          --shadow-md: 0 .5rem 1rem rgba(255,255,255,.07);
+          --blockquote-color: #e0e0e0;
+      }
+      html[lang="ar"] body { font-family: var(--font-family-arabic); }
+      html[lang="en"] body { font-family: var(--font-family-sans-serif); }
+      body { 
+        padding-top: 5.5rem; 
+        background-color: var(--light-bg); 
+        color: var(--dark-text); 
+        transition: background-color 0.3s ease, color 0.3s ease; 
+        font-weight: 400;
+      }
+      .navbar { 
+        background-color: var(--navbar-bg) !important; 
+        box-shadow: var(--shadow-sm); 
+        transition: background-color 0.3s ease; 
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+      .navbar-brand { font-weight: 600; font-size: 1.5rem; color: #fff !important;}
+      html[lang="ar"] .navbar-brand { font-weight: 700; }
+      .navbar-nav .nav-link {
+        font-weight: 500;
+        color: rgba(255,255,255,.75) !important;
+        transition: color .15s ease-in-out;
+      }
+      .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+        color: #fff !important;
+      }
+      .navbar-nav .nav-item .btn {
+        margin-left: 0.5rem; 
+        font-weight: 500;
+      }
+      .main-content-wrapper { 
+        background-color: var(--card-bg); 
+        border-radius: var(--border-radius); 
+        box-shadow: var(--shadow-md); 
+        padding: 2rem; 
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+        margin-bottom: 2rem; 
+        margin-top: 2rem;
+      }
+      h1 { 
+        color: var(--primary-color); 
+        font-weight: 600; 
+        margin-bottom: 1.5rem; 
+        font-size: 2rem;
+        text-align: center;
+      }
+      html[lang="ar"] h1 { font-weight: 700; }
+      .explanation-content h2, .explanation-content h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+      html[lang="ar"] .explanation-content h2, html[lang="ar"] .explanation-content h3 {
+        font-weight: 700;
+      }
+      .explanation-content p, .explanation-content li {
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        color: var(--dark-text);
+        font-size: 1.05rem;
+      }
+      .explanation-content ul {
+        padding-left: 25px;
+        list-style-type: disc; /* Or square, circle */
+      }
+      .explanation-content strong {
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+      html[data-theme="dark"] .explanation-content p, html[data-theme="dark"] .explanation-content li {
+        color: var(--light-text);
+      }
+      html[data-theme="dark"] .explanation-content strong {
+        color: var(--primary-color); /* Keep primary for dark mode emphasis or adjust if needed */
+      }
+
+      /* Mobile specific adjustments */
+      @media (max-width: 767.98px) {
+        body { padding-top: 5rem; }
+        .main-content-wrapper { padding: 1.5rem; margin-top: 1rem; }
+        h1 { font-size: 1.75rem; }
+        .navbar-nav .nav-item .btn {
+          margin-left: 0; 
+          margin-top: 0.5rem; 
+          width: 100%; 
+          padding: 0.5rem;
+          font-size: 0.95rem;
+        }
+        .navbar-nav .nav-item:first-child .btn {
+            margin-top: 0.75rem; 
+        }
+        .navbar-nav .nav-item:last-child .btn {
+            margin-bottom: 0.75rem; 
+        }
+        .navbar-nav.ms-auto {
+            align-items: stretch; 
+        }
+        .navbar-toggler { margin-right: 0.5rem; padding: .25rem .5rem;}
+        .navbar-collapse.show .navbar-button-label-text {
+          display: inline !important; 
+        }
+        .explanation-content p, .explanation-content li {
+            font-size: 1rem;
+        }
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/" data-translate="navbar_brand">Sahih</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/" data-translate="navbar_home"><i class="bi bi-house-door-fill me-1 d-md-none"></i>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/hadith-ranking-explanation" data-translate="navbar_ranking_explanation"><i class="bi bi-info-circle-fill me-1 d-md-none"></i>Hadith Ranking Explanation</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <button id="darkModeToggle" class="btn btn-outline-light">
+                <i class="bi bi-moon-stars-fill"></i> <span class="navbar-button-label-text ms-1 d-none d-md-inline" data-translate="dark_mode_toggle_text">Dark Mode</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button id="languageToggle" class="btn btn-outline-light">
+                <i class="bi bi-translate"></i> <span class="navbar-button-label-text ms-1 d-none d-md-inline"></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mt-4">
+      <div class="main-content-wrapper">
+        <h1 data-translate="hadith_ranking_title">Explanation of Hadith Ranks</h1>
+        <div id="explanationAr" class="explanation-content" style="display: none;">
+            <!-- Arabic content will be loaded here by JS -->
+        </div>
+        <div id="explanationEn" class="explanation-content" style="display: none;">
+            <!-- English content will be loaded here by JS -->
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const languageToggleButton = document.getElementById("languageToggle");
+        const darkModeToggleButton = document.getElementById("darkModeToggle");
+        const bootstrapRtlLink = document.querySelector("link[href*=\'bootstrap.rtl.min.css\']");
+        let currentLang = localStorage.getItem("language") || "en";
+        let currentTheme = localStorage.getItem("theme") || "light";
+        let translations = {};
+        const explanationArDiv = document.getElementById("explanationAr");
+        const explanationEnDiv = document.getElementById("explanationEn");
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+            currentTheme = theme;
+            const toggleButton = document.getElementById("darkModeToggle");
+            const toggleButtonText = toggleButton.querySelector("span.navbar-button-label-text");
+            if (toggleButton) {
+                toggleButton.querySelector("i").className = theme === "dark" ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+                if(toggleButtonText) toggleButtonText.textContent = getTranslation(theme === "dark" ? "light_mode_toggle_text" : "dark_mode_toggle_text");
+            }
+        }
+
+        async function loadTranslations(lang) {
+            try {
+                const response = await fetch(`/locales/${lang}.json`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                translations = await response.json();
+                applyTranslationsToPage(lang);
+            } catch (error) {
+                console.error(`Error loading translations for ${lang}:`, error);
+                applyTranslationsToPage(lang); 
+            }
+        }
+        
+        function getTranslation(key, defaultText = ``) {
+            return translations[key] || defaultText || key;
+        }
+
+        function applyTranslationsToPage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+            if (bootstrapRtlLink) bootstrapRtlLink.disabled = lang !== "ar";
+            
+            document.querySelectorAll("[data-translate]").forEach(element => {
+                const key = element.getAttribute("data-translate");
+                const textSpan = element.querySelector("span.navbar-button-label-text");
+                 if(textSpan && (element.id === "darkModeToggle" || element.id === "languageToggle")) { 
+                    // Special handling for navbar toggle button text spans, text set in specific logic below
+                } else if (element.matches("a.nav-link")) { 
+                    const icon = element.querySelector("i");
+                    if (icon) {
+                        element.childNodes[element.childNodes.length -1].nodeValue = ` ${getTranslation(key, element.textContent.replace(icon.outerHTML, "").trim())}`;
+                    } else {
+                        element.textContent = getTranslation(key, element.textContent);
+                    }
+                } else if (!element.querySelector("i")) { 
+                   element.textContent = getTranslation(key, element.textContent);
+                }
+            });
+            const titleElement = document.querySelector("title[data-translate]");
+            if (titleElement) {
+                const titleKey = titleElement.getAttribute("data-translate");
+                document.title = getTranslation(titleKey, document.title);
+            }
+            const langToggleButtonText = languageToggleButton.querySelector("span.navbar-button-label-text");
+            languageToggleButton.querySelector("i").className = "bi bi-translate";
+            if (lang === "ar") {
+                if(langToggleButtonText) langToggleButtonText.textContent = getTranslation("language_toggle_en_text");
+            } else {
+                if(langToggleButtonText) langToggleButtonText.textContent = getTranslation("language_toggle_ar_text");
+            }
+            const themeToggleButton = document.getElementById("darkModeToggle");
+            const themeToggleButtonText = themeToggleButton.querySelector("span.navbar-button-label-text");
+            if(themeToggleButtonText) themeToggleButtonText.textContent = getTranslation(currentTheme === "dark" ? "light_mode_toggle_text" : "dark_mode_toggle_text");
+
+            loadExplanationContent(lang);
+        }
+
+        async function loadExplanationContent(lang) {
+            const filePath = lang === "ar" ? "/static/content/hadith_ranking_explanation_ar.md" : "/static/content/hadith_ranking_explanation_en.md";
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+                const markdownText = await response.text();
+                let htmlContent = markdownText
+                    .replace(/^## (.*$)/gim, "<h2>$1</h2>")
+                    .replace(/^### (.*$)/gim, "<h3>$1</h3>")
+                    .replace(/^\*\* (.*$)/gim, "<strong>$1</strong>") 
+                    .replace(/\*\*(.*?)\*\*/gim, "<strong>$1</strong>") 
+                    .replace(/\n\n/g, "</p><p>")
+                    .replace(/\n/g, "<br>"); 
+                htmlContent = `<p>${htmlContent}</p>`;
+                htmlContent = htmlContent.replace(/<br>\d+\.\s*(.*?)<br>/gim, "</li><li>$1</li><br>");
+                htmlContent = htmlContent.replace(/<li>(.*?)<\/li><br>(?!<li>)/gim, "<li>$1</li></ul>");
+                htmlContent = htmlContent.replace(/<br><li>/gim, "<ul><li>");
+                htmlContent = htmlContent.replace(/<br><\/ul>/gim, "</ul>");
+                htmlContent = htmlContent.replace(/<p><\/ul><\/p>/gim, "</ul>");
+                htmlContent = htmlContent.replace(/<p><ul>/gim, "<ul>");
+
+                if (lang === "ar") {
+                    explanationArDiv.innerHTML = htmlContent;
+                    explanationArDiv.style.display = "block";
+                    explanationEnDiv.style.display = "none";
+                } else {
+                    explanationEnDiv.innerHTML = htmlContent;
+                    explanationEnDiv.style.display = "block";
+                    explanationArDiv.style.display = "none";
+                }
+            } catch (error) {
+                console.error("Error loading explanation content:", error);
+                const errorMsg = getTranslation("error_loading_content", "Error loading content.");
+                if (lang === "ar") explanationArDiv.innerHTML = `<p>${errorMsg}</p>`;
+                else explanationEnDiv.innerHTML = `<p>${errorMsg}</p>`;
+            }
+        }
+
+        languageToggleButton.addEventListener("click", () => {
+            const newLang = currentLang === "en" ? "ar" : "en";
+            localStorage.setItem("language", newLang);
+            loadTranslations(newLang);
+        });
+
+        darkModeToggleButton.addEventListener("click", () => {
+            const newTheme = currentTheme === "light" ? "dark" : "light";
+            localStorage.setItem("theme", newTheme);
+            applyTheme(newTheme);
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem("theme") || "light";
+            const savedLang = localStorage.getItem("language");
+            const browserLang = navigator.language.split("-")[0];
+            const initialLang = savedLang || (browserLang === "ar" ? "ar" : "en");
+            currentLang = initialLang;
+
+            applyTheme(savedTheme);
+            loadTranslations(initialLang);
+        });
+    </script>
+</body>
+</html>
