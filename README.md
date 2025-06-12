@@ -8,7 +8,7 @@ The project aims to make verified Islamic Hadiths easily accessible through a cl
 
 ### 🚀 Features
 - Displays authentic Hadiths (Sahih)
-- Enhlish interface with clean UI
+- English interface with clean UI
 - Fast and lightweight
 
 ### 🔧 Technologies Used
