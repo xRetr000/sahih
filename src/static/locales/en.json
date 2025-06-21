@@ -34,6 +34,8 @@
   "close_button": "Close",
   "hadith_ranking_page_title": "Hadith Ranking Explanation - Sahih",
   "hadith_ranking_title": "Explanation of Hadith Ranks",
-  "error_loading_content": "Error loading content. Please try refreshing the page."
+  "error_loading_content": "Error loading content. Please try refreshing the page.",
+  "share_button": "Share",
+  "download_button": "Download Image"
 }
 
